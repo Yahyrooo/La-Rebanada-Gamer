@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Rebanada Gamer - Comida rápida para gamers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #e12caf;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #ff5252;
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: 15px;
+        }
+
+        /* Header */
+        header {
+            background-color: #bb179b;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        nav {
+            background-color: #333;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        nav ul li a:hover {
+            color: #ff6b6b;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Hero section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url("https://scontent.ftam2-1.fna.fbcdn.net/v/t39.30808-6/498310726_640285552375196_1660878220589016315_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=127cfc&_nc_ohc=uUtu8kci_0EQ7kNvwGKg3Pf&_nc_oc=AdlnEVU-EfCtJbdGjmSa7uHn888qGfRBSw0XiYEL_7TiMOEk2FzQMA5n_mghAib7w1Ej3UDc47qUmH16IXJu7Xve&_nc_zt=23&_nc_ht=scontent.ftam2-1.fna&_nc_gid=KehlkR4-1TnQAyLQqWdBvA&oh=00_AfIJEhkAJ0X3JUMvjRmFa-TxZ3TCEgYQd0m79KumarKB3A&oe=682DBD07");
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 120px 0;
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        /* Menu section */
+        .menu-section {
+            padding: 60px 0;
+            background-color: white;
+        }
+
+        .menu-section h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: #333;
+            position: relative;
+        }
+
+        .menu-section h2::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background-color: #ff6b6b;
+            margin: 15px auto 0;
+        }
+
+        .category {
+            margin-bottom: 50px;
+        }
+
+        .category h3 {
+            font-size: 1.8rem;
+            color: #ff6b6b;
+            border-bottom: 2px solid #ff6b6b;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .category h3 i {
+            margin-right: 10px;
+        }
+
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .menu-item {
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .menu-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .menu-item h4 {
+            padding: 0 15px;
+            font-size: 1.3rem;
+            color: #333;
+            margin-top: 15px;
+        }
+
+        .menu-item p {
+            padding: 0 15px;
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .price {
+            display: block;
+            padding: 0 15px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin-bottom: 15px;
+        }
+
+        .add-to-cart {
+            display: block;
+            width: calc(100% - 30px);
+            margin: 0 15px 15px;
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background-color: #ff6b6b;
+        }
+
+        /* Promotions section */
+        .promotions {
+            padding: 60px 0;
+            background-color: #f1f1f1;
+        }
+
+        .promotions h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: #333;
+            position: relative;
+        }
+
+        .promotions h2::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background-color: #ff6b6b;
+            margin: 15px auto 0;
+        }
+
+        .promo-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .promo-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .promo-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .promo-card h3 {
+            color: #ff6b6b;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .promo-card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+
+        .old-price {
+            font-size: 1.2rem;
+            text-decoration: line-through;
+            color: #999;
+            margin-left: 10px;
+        }
+
+        /* Contact section */
+        .contact {
+            padding: 60px 0;
+            background-color: white;
+        }
+
+        .contact h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: #333;
+            position: relative;
+        }
+
+        .contact h2::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 4px;
+            background-color: #ff6b6b;
+            margin: 15px auto 0;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .contact-info div {
+            text-align: center;
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-info h3 {
+            font-size: 1.3rem;
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-info h3 i {
+            margin-right: 10px;
+        }
+
+        .contact-info p {
+            color: #666;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: grid;
+            gap: 15px;
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #ff6b6b;
+            outline: none;
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ff6b6b;
+            transform: translateY(-5px);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ff6b6b;
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 20px;
+        }
+
+        /* Carrito de compras */
+        .cart-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #ea05a1;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+
+        .cart-button:hover {
+            background-color: #ff5252;
+            transform: scale(1.1);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #333;
+            color: white;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: right 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            color: white;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+            transition: color 0.3s;
+        }
+
+        .close-cart:hover {
+            color: #ff6b6b;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: #ff6b6b;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-quantity {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #ff6b6b;
+            cursor: pointer;
+            font-size: 1.2rem;
+            margin-left: 15px;
+            transition: transform 0.3s;
+        }
+
+        .cart-item-remove:hover {
+            transform: scale(1.2);
+        }
+
+        .cart-total {
+            padding: 20px;
+            border-top: 1px solid #ddd;
+            text-align: right;
+            font-size: 1.2rem;
+            background-color: #f9f9f9;
+        }
+
+        .checkout-btn {
+            width: calc(100% - 40px);
+            margin: 0 20px 20px;
+            padding: 12px;
+            font-size: 1.1rem;
+        }
+
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s;
+        }
+
+        .cart-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Notificación */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1001;
+        }
+        
+        .notification.show {
+            opacity: 1;
+        }
+
+        /* Badge para nuevos productos */
+        .new-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #ff6b6b;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .menu-items, .promo-cards, .contact-info {
+                grid-template-columns: 1fr;
+            }
+            
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 5px 0;
+            }
+
+            .hero {
+                padding: 80px 0;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+
+            .menu-section h2, .promotions h2, .contact h2 {
+                font-size: 1.8rem;
+            }
+
+            .category h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>La Rebanada Gamer</h1>
+            <p>Comida rápida para gamers</p>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#menu">Menú</a></li>
+                <li><a href="#promociones">Promociones</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h2>Bienvenido a la Rebanada Gamer</h2>
+            <p>Disfruta de nuestros deliciosos combos diseñados especialmente para mantener tu energía.</p>
+            <a href="#menu" class="btn">Ver Menú</a>
+        </div>
+    </section>
+
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <h2>Menú Gamer</h2>
+            
+            <div class="category">
+                <h3><i class="fas fa-pizza-slice"></i> Pizzas Gamer</h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="new-badge">Nuevo</div>
+                        <img src="https://scontent.ftam2-1.fna.fbcdn.net/v/t39.30808-6/497842259_640287349041683_6708714432220320833_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=9H1BubrMn0YQ7kNvwGNQ6rX&_nc_oc=AdnABSMuy1EOu7KR_GGVgOO4lhl7_-NlUY8fdfVAQOUKbB3pyPiUpgXP3WR4v8QD1yYJ_0ZDNX-suDYeZwHHp_ux&_nc_zt=23&_nc_ht=scontent.ftam2-1.fna&_nc_gid=d2-orbIjfI7bat9RJE3Z3A&oh=00_AfKyPAM0RsuZOUkbtNXUdEIPK9nJXqgNj8MPJCogeIX3mQ&oe=682DA7BA" alt="Pizza Boneless">
+                        <h4>Pizza Boneless</h4>
+                        <p>Trozos de pollo boneless bañados en salsa, sobre una base de queso derretido y salsa de tomate.</p>
+                        <span class="price">$175.00</span>
+                        <button class="add-to-cart" data-item="Pizza RGB" data-price="14.99">Añadir al carrito</button>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://scontent.ftam2-1.fna.fbcdn.net/v/t39.30808-6/497278442_640291339041284_2839649821838273216_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_ohc=TiB-BY3GKAgQ7kNvwHa7o9p&_nc_oc=AdkkVl1c_Zk9aCbhgC3vnXK4xdWSS6EA1i7sMVdEC7b-tubDC39qacYUGVtedBI_N_GRuCKeu0XGJ5P4YTFP_0cx&_nc_zt=23&_nc_ht=scontent.ftam2-1.fna&_nc_gid=PORxjJxRnRBb1Cmh4gncIw&oh=00_AfLRLXCl1nTEIz50mDGNkQ0u5FyA7UVgp-u0pskFCsL2zg&oe=682DC577" alt="Pizza Overclock">
+                        <h4>Pizza Hawaiana</h4>
+                        <p>La clásica combinación de jamón y piña sobre una capa de queso fundido y salsa de tomate.</p>
+                        <span class="price">$120.00</span>
+                        <button class="add-to-cart" data-item="Pizza Overclock" data-price="16.99">Añadir al carrito</button>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://scontent.ftam2-1.fna.fbcdn.net/v/t39.30808-6/499455947_640292262374525_2898520268502552975_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=8oAKo-6nlKYQ7kNvwGtAwsW&_nc_oc=AdmJAHjotnlAPqUC7aU4zTeaMmlS58xO521wv5GZ7nuj-T-ja3epnx7RoeAGSmnj4mb2FFj-eKocquLsSolGArxh&_nc_zt=23&_nc_ht=scontent.ftam2-1.fna&_nc_gid=knBoibgiQlon51aGGPNr5A&oh=00_AfLYMoTVSAxLMLIy1hlI36TcGcjrZ9oAMldFgSTfgfRJfA&oe=682D9F2B" alt="Pizza No Lag">
+                        <h4>Pizza Pepperoni</h4>
+                        <p>Repleta de rodajas de pepperoni crujiente sobre una base de queso y salsa de tomate.</p>
+                        <span class="price">$99.00</span>
+                        <button class="add-to-cart" data-item="Pizza No Lag" data-price="15.99">Añadir al carrito</button>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://scontent.ftam2-1.fna.fbcdn.net/v/t39.30808-6/497885649_640298685707216_6419309050823538026_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=Uf6TA-G9ABoQ7kNvwEtN8H9&_nc_oc=AdlCABpekXtbTP2alxhtD-w5qUscqgjPd77Fjh_8UHoFU0NWZXf7314KrgUofKfJGrb8bTxyMyqMYK7PdoHENUW9&_nc_zt=23&_nc_ht=scontent.ftam2-1.fna&_nc_gid=8I_VyDxy4aAwFdMpQ8aGAQ&oh=00_AfKY9WktF2fXfnfo5uyrqglwamgAx63JYMcysnaSPXSl5g&oe=682DB49F" alt="Pizza Vegetariana Pro">
+                        <h4>Cuatro Carnes</h4>
+                        <p>Una mezcla poderosa de jamón, pepperoni, chorizo y tocino, con queso derretido y salsa de tomate.</p>
+                        <span class="price">$150.00</span>
+                        <button class="add-to-cart" data-item="Pizza Vegetariana Pro" data-price="13.99">Añadir al carrito</button>
+                    </div>
+                    <div class="menu-item">
+                        <div class="new-badge">Nuevo</div>
+                        <img src="https://scontent.ftam2-1.fna.fbcdn.net/v/t39.30808-6/499228658_640302322373519_6407926947117457233_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=9nSdSVdLVygQ7kNvwFjlt76&_nc_oc=AdlwF_A2WlprihovL93AabimBMPGqDyyCklpF7EMv0FW21O4dayL5Gp7wes7MCy-tEHUOjFPc2OOaNHlUhasielj&_nc_zt=23&_nc_ht=scontent.ftam2-1.fna&_nc_gid=Y861KPcU2dqkpIj8EmvGxg&oh=00_AfJNkFL4qe9e7Zr6-GRCIKsZ0Lphcp3cpnWcWZQ1p3mv6g&oe=682DC5D3">
+                        <h4>Extra Queso HD</h4>
+                        <p>Doble porción de queso fundido sobre una base de salsa de tomate.</p>
+                        <span class="price">$125.00</span>
+                        <button class="add-to-cart" data-item="Pizza 4K Ultra HD" data-price="18.99">Añadir al carrito</button>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://scontent.ftam2-1.fna.fbcdn.net/v/t39.30808-6/494753657_640305929039825_8876261309226222012_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=mF2LHNwkUcMQ7kNvwG4W_wq&_nc_oc=AdlGu0_Gi3WrHdFW03fKYfWaDeuj0AsWFTFiPlh17JAjjAQ83QWma1CHqfn8PRlz368zGhTgG44Tcq3glJoyCwmZ&_nc_zt=23&_nc_ht=scontent.ftam2-1.fna&_nc_gid=D2GH3OCzzqh_zmoKr-4DPA&oh=00_AfIQMhqXwOJVQ7sfzC6fiN5Q4oP-bSjuwtrMa8WFHCl4Ig&oe=682DD0CC" alt="Pizza Retro 8-bit">
+                        <h4>Pizza Champiñones 8-bit</h4>
+                        <p>Delicados champiñones frescos sobre una capa de queso y salsa de tomate.</p>
+                        <span class="price">$100.00</span>
+                        <button class="add-to-cart" data-item="Pizza Retro 8-bit" data-price="12.99">Añadir al carrito</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category">
+                <h3><i class="fas fa-hamburger"></i> Burgers Gamer</h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="new-badge">Nuevo</div>
+                        <img src="https://scontent.ftam2-1.fna.fbcdn.net/v/t39.30808-6/494043653_640311652372586_1107375672711072811_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=uYaIbvaeUGwQ7kNvwFIaBGZ&_nc_oc=Admx3hiNlB2mQmPUDFpwYTM1dz-dst_CLG1jCYN76rWNn1jW8RZZtM3WtR2zfgrgwFwJ3pQdDoVTpYgSQnjiuWNf&_nc_zt=23&_nc_ht=scontent.ftam2-1.fna&_nc_gid=HdyRhc-EzJnII3s_gnzaew&oh=00_AfKWXfy1ZBrWPtnOofJdk9ERjAGiRdnQWcJwCN0KCPlu6Q&oe=682DB0FF" alt="Burger FPS">
+                        <h4>Guacamelee</h4>
+                        <p> Carne de res jugosa con queso fundido, bañada en una salsa de guacamole picosita para un toque fresco y cremoso.
+</p>
+                        <span class="price">$99.00</span>
+                        <button class="add-to-cart" data-item="Burger FPS" data-price="10.99">Añadir al carrito</button>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://scontent.ftam2-1.fna.fbcdn.net/v/t39.30808-6/497395795_640315322372219_6924999276319486245_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=7LIqfYdkUGwQ7kNvwHMWJJd&_nc_oc=AdnpcKJvwfY3x6ojUnqVcSpXdmkQ4Ga76OA6e75p4lJQIaJXY-1QZPZZjWkzuY3zIMzsZBllcnYDAW-IZ1CiJg8s&_nc_zt=23&_nc_ht=scontent.ftam2-1.fna&_nc_gid=eqyCnNMu0Eh9aklAQA3IUQ&oh=00_AfL704tzGPraibXCqeuMMRBV4ivr9deKyLCuTerQ52QtXA&oe=682DC67C" alt="Burger RPG">
+                        <h4>Hamburguesa Clasica</h4>
+                        <p> Carne de res sazonada con especias, acompañada de queso amarillo derretido en un pan suave. Con 110g papas fritas</p>
+                        <span class="price">$65.00</span>
+                        <button class="add-to-cart" data-item="Burger RPG" data-price="11.99">Añadir al carrito</button>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://scontent.ftam2-1.fna.fbcdn.net/v/t39.30808-6/499560715_640318569038561_910297293201244325_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=wmDzqagt8DcQ7kNvwGz-Zhh&_nc_oc=AdnfctmIccNTPsuWb1wfUPZZR4RjgOBAOF_CW3MlhomWyAmNmzAnAJScGxsM388MdTdYXOGZdhrIEM733TaCxIim&_nc_zt=23&_nc_ht=scontent.ftam2-1.fna&_nc_gid=h5xDGAYNlyMto3I1wXErYg&oh=00_AfJ2o6SK5S52bpYHO3IXCWYUM5gYrsedHs-WQaJwGykvdQ&oe=682DD3B4" alt="Burger Battle Royale">
+                        <h4>Hawaiana</h4>
+                        <p> Una combinación tropical de carne de res, piña caramelizada, jamón y queso amarillo asado.
+</p>
+                        <span class="price">$85.00</span>
+                        <button class="add-to-cart" data-item="Burger Battle Royale" data-price="15.99">Añadir al carrito</button>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://scontent.ftam2-1.fna.fbcdn.net/v/t39.30808-6/495138228_640322989038119_4212270697730436720_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_ohc=RjOGrHHp8tAQ7kNvwGX_zTJ&_nc_oc=Adn8mD-xIIsLIwbbgYyhZbagqGmNMt38qlvm8YmfC7YUP8peN-rBJkNsWRh08Xb4eKgUwBA1gKCQpSvVKh8JHonr&_nc_zt=23&_nc_ht=scontent.ftam2-1.fna&_nc_gid=Efjs4HhA5f8OcU3ZvastXg&oh=00_AfKVkz0uEKY2uG7bMARVc88bKxekzzSKS0meoPJXm4BrmQ&oe=682DB8DB" alt="Burger Indie">
+                        <h4>Hamburguesa Suiza</h4>
+                        <p> Carne de res con una mezcla de quesos suizos derretidos y champiñones salteados. </p>
+                        <span class="price">$85.00</span>
+                        <button class="add-to-cart" data-item="Burger Indie" data-price="9.99">Añadir al carrito</button>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://scontent.ftam2-1.fna.fbcdn.net/v/t39.30808-6/496230412_640327259037692_8916268282614990148_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=dOXWX_1ctBAQ7kNvwHF_cAe&_nc_oc=AdkXe7tehWsrxB_jt5C6Q8U5MB80DRUbRxuUoGbqVwU2q6ibJMWrSnyrY666D_xGZMTVZs276PO43CA2R6YVIYlA&_nc_zt=23&_nc_ht=scontent.ftam2-1.fna&_nc_gid=Jv62OQfA7OqO9KjkBFySPQ&oh=00_AfI9Wfe9R6kITwuZ0p6L0yBhi99y5JDKDZpUSTE9jKHh6g&oe=682DC54C" alt="Burger Speedrun">
+                        <h4>Western</h4>
+                        <p>Una hamburguesa robusta con carne de res, tiras de tocino ahumado, aros de cebolla crujientes y salsa BBQ.</p>
+                        <span class="price">$80.00</span>
+                        <button class="add-to-cart" data-item="Burger Speedrun" data-price="8.99">Añadir al carrito</button>
+                    </div>
+                    <div class="menu-item">
+                        <div class="new-badge">Nuevo</div>
+                        <img src="https://scontent.ftam2-1.fna.fbcdn.net/v/t39.30808-6/494592532_640337915703293_3767455643149251449_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=dGDjWL6Emi4Q7kNvwFvfuxq&_nc_oc=AdlkE5CS-CT53VbQ_0vD0uJotox5cMGAs5g6sYjcRn0IoMKiJDaQQogQ0MQlE0dzxW6eBSj_bOy4mSqzO1mxqL-i&_nc_zt=23&_nc_ht=scontent.ftam2-1.fna&_nc_gid=b-TXiRsftJnB2DZ-ctIKKQ&oh=00_AfIE6C_itA27GuaiR4j3eTb-eq2qj83WnjOer4QaVx_sYA&oe=682DDEFB" alt="Burger Next-Gen">
+                        <h4>Hamburguesa Boneless</h4>
+                        <p>Trozos de pollo boneless bañados en salsa especial, servidos sobre una base de queso fundido y pan tostado. </p>
+                        <span class="price">$99.00</span>
+                        <button class="add-to-cart" data-item="Burger Next-Gen" data-price="19.99">Añadir al carrito</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="category">
+                <h3><i class="fas fa-hotdog"></i> Salchipapas & Snacks</h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <img src="https://scontent.ftam2-1.fna.fbcdn.net/v/t39.30808-6/499272646_640340762369675_3952958712631086023_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_ohc=7Y-kw4-9LvEQ7kNvwHNUCMb&_nc_oc=AdlqtoklXeayyI14-HBJ2r11GrZCS0F0rSYfGy9pxXceuSjPlLw4CetaksgNLPlQ7WyTolgde2sNvJAp38Hrb73Q&_nc_zt=23&_nc_ht=scontent.ftam2-1.fna&_nc_gid=ClEFZKlF3MA_qssdxV0C5Q&oh=00_AfLONoLjyQKyYInJwjbjxtAVsCnmbYgPVDyuBY4_vALHAw&oe=682DCA6A" alt="Salchipapa Full HD">
+                        <h4>Salchipapa 3 Salsas</h4>
+                        <p>Orden de salchipapas con 3 salsas de la casa a elegir. BBQ/Chipotle/Ranch. </p>
+                        <span class="price">$60.00</span>
+                        <button class="add-to-cart" data-item="Salchipapa Full HD" data-price="8.99">Añadir al carrito</button>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://scontent.ftam2-1.fna.fbcdn.net/v/t39.30808-6/496667481_640349842368767_7578234635489727405_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=iTo3WSjO0QYQ7kNvwFOJkNd&_nc_oc=AdnHuecrdDB1EPNln8uVXLFcSm__9bzjEQAP-kbakaRusejY9ssEEiz_gyfU_xHs7L-KsiDfKUZgvZZiBS6H8EDb&_nc_zt=23&_nc_ht=scontent.ftam2-1.fna&_nc_gid=-l8tubcNesXYz-2T6AoVSQ&oh=00_AfKJtnsoiKNXGo2sWe6MWqjzdNtqnPOJF7QXUjU2rMpubA&oe=682DCE56" alt="Salchipapa RGB">
+                        <h4>Dedos de queso</h4>
+                        <p>Porción de 5 dedos de queso</p>
+                        <span class="price">$60.00</span>
+                        <button class="add-to-cart" data-item="Salchipapa RGB" data-price="7.99">Añadir al carrito</button>
+                    </div>
+                    <div class="menu-item">
+                        <div class="new-badge">Nuevo</div>
+                        <img src="https://scontent.ftam2-1.fna.fbcdn.net/v/t39.30808-6/494268709_640353049035113_693535041527538966_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=127cfc&_nc_ohc=mGWlmu5Mg2IQ7kNvwE5YhhS&_nc_oc=AdkCsVqC6cyb2EDhN9Ru678_c_RCQUWTIksgjnHjwKN5wNrNFhGjAzPdkRIlEfRsXRSbNY0Fz-hjU_xOGx7yb2mC&_nc_zt=23&_nc_ht=scontent.ftam2-1.fna&_nc_gid=JsoajnIl_eEv-7NyFHW2hA&oh=00_AfKFVTdrez9CTwTSi0S_d9Nxmy1-L20xYBqMITtk8OEpog&oe=682DE2C7" alt="Nachos Multiplayer">
+                        <h4>Boneless</h4>
+                        <p>Orden de 500gr de boneless, 2 salsas a elegir </p>
+                        <span class="price">$210.00</span>
+                        <button class="add-to-cart" data-item="Nachos Multiplayer" data-price="6.99">Añadir al carrito</button>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://scontent.ftam2-1.fna.fbcdn.net/v/t39.30808-6/496076677_640359069034511_8635685477651321003_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_ohc=jjTyV0wDOG0Q7kNvwE5nsOR&_nc_oc=AdkZyo59WFiHPGFiJzxoKhp-6BXOX5peIlHKRY-izvqgzI_P6CAWle_g2YCBSTQWo3dWbWyO7Y5bKZzqjLLqtYNL&_nc_zt=23&_nc_ht=scontent.ftam2-1.fna&_nc_gid=dmnNgjmKM9UGFsA_Ss7awA&oh=00_AfJzcOnATTpbKPOI1hXnuIfX6AZ4drire37WfY-qUETPbQ&oe=682DE2C3" alt="Alitas Co-op">
+                        <h4>Orden de papas</h4>
+                        <p>200gr de papas a la francesa</p>
+                        <span class="price">$65.00</span>
+                        <button class="add-to-cart" data-item="Alitas Co-op" data-price="9.99">Añadir al carrito</button>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://scontent.ftam2-1.fna.fbcdn.net/v/t39.30808-6/496387250_640363322367419_1338592599814953081_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=127cfc&_nc_ohc=oG5fTl0dRJ8Q7kNvwGkMKjE&_nc_oc=AdmOC7rEOIpxVfdkbe5QI7kxTeds3eTn1ZCnXlj78CflREz_WIksfEMYSGU30raSLt0MEoB6534PcK0dnq9W_LdP&_nc_zt=23&_nc_ht=scontent.ftam2-1.fna&_nc_gid=5olY4o8yVRngBQFz8vbSPQ&oh=00_AfJBPjTNmGhodWD65Xhi-PR_ADHnHvLDYYiFYeNY48YB_A&oe=682DE84C" alt="Tenders PvP">
+                        <h4>Alitas</h4>
+                        <p>Crujientes por fuera y jugosas por dentro, bañadas en tu elección de salsa: BBQ, búfalo, miel mostaza o habanero. </p>
+                        <span class="price">$150.00</span>
+                        <button class="add-to-cart" data-item="Tenders PvP" data-price="7.99">Añadir al carrito</button>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://scontent.ftam2-1.fna.fbcdn.net/v/t39.30808-6/496408404_640369622366789_5277511292690961156_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=f_OUDW6bBREQ7kNvwGdnlHa&_nc_oc=AdmXpQdbjxLf7oaJxeIByU1tu3HJFACX_nkrAc9ihA9E5PNdW5oS3PMLMNaZB50qfzdeLKvR-5COAUXp5SkT88h5&_nc_zt=23&_nc_ht=scontent.ftam2-1.fna&_nc_gid=rQ6qvG01gYD3Q8AyppRSGg&oh=00_AfJAhTUmC8Qc6OKnxGplDSzHvmhr6M2N27yGQcKazcE-xg&oe=682DD97D" alt="Palitos de Queso DLC">
+                        <h4>Aros de cebolla DLC</h4>
+                        <p>350gr de aros de cebolla.</p>
+                        <span class="price">$75.00</span>
+                        <button class="add-to-cart" data-item="Palitos de Queso DLC" data-price="5.99">Añadir al carrito</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category">
+                <h3><i class="fas fa-glass-cheers"></i> Bebidas Gamer</h3>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <img src="https://150927483.v2.pressablecdn.com/wp-content/uploads/2025/01/850622.png" alt="Energy Potion">
+                        <h4>Coca Colah4>
+                        <p>Coca Cola 600 ml </p>
+                        <span class="price">$25.00</span>
+                        <button class="add-to-cart" data-item="Energy Potion" data-price="3.99">Añadir al carrito</button>
+                    </div>
+                    <div class="menu-item">
+                        <div class="new-badge">Nuevo</div>
+                        <img src="https://st2.depositphotos.com/1875497/8261/i/450/depositphotos_82612078-stock-photo-fruit-and-vegetable-juice-bottles.jpg" alt="Mana Cola">
+                        <h4>Bebidas de sabores</h4>
+                        <p>Jugos/Aguas de sabores. </p>
+                        <span class="price">$20.00</span>
+                        <button class="add-to-cart" data-item="Mana Cola" data-price="2.99">Añadir al carrito</button>
+                    </div>
+                    <div class="menu-item">
+                        <img src="https://media.istockphoto.com/id/1311455883/es/vector/vector-botellas-realistas-de-agua.jpg?s=612x612&w=0&k=20&c=3wmcdeNTmPqp-QIO6WZReEPaxk0tkaBiAbjr3hAmA2w=" alt="Health Smoothie">
+                        <h4>Agua</h4>
+                        <p>Agua Natural 500 ml</p>
+                        <span class="price">$20.00</span>
+                        <button class="add-to-cart" data-item="Health Smoothie" data-price="4.99">Añadir al carrito</button>
+                    </div>
+                    <div class="menu-item">
+                      
+                            </section>
+
+    <section id="promociones" class="promotions">
+        <div class="container">
+            <h2>Combos Especiales</h2>
+            <div class="promo-cards">
+                <div class="promo-card">
+                    <h3>Combo Streaming</h3>
+                    <p>1 Pizza mediana + 2 Burgers + 2 Bebidas energéticas + 1 Postre</p>
+                    <span class="price">$29.99</span>
+                    <span class="old-price">$35.99</span>
+                    <button class="add-to-cart" data-item="Combo Streaming" data-price="29.99">Añadir combo</button>
+                </div>
+                <div class="promo-card">
+                    <h3>Combo Torneo</h3>
+                    <p> 2 Pizzas pepperoni + Alitas + 4 Bebidas </p>
+                    <span class="price">$399.00</span>
+                    <span class="old-price">$428.00</span>
+                    <button class="add-to-cart" data-item="Combo Torneo" data-price="49.99">Añadir combo</button>
+                </div>
+                <div class="promo-card">
+                    <h3>Combo SoloQ</h3>
+                    <p>1 Hamburguesa Clasica + 1 Salchipapa + 1 Bebida</p>
+                    <span class="price">$130.00</span>
+                    <span class="old-price">$140.00</span>
+                    <button class="add-to-cart" data-item="Combo SoloQ" data-price="12.99">Añadir combo</button>
+                </div>
+                <div class="promo-card">
+                    <h3>Combo LAN Party</h3>
+                    <p> 4 Pizzas Pepperoni + Boneless + Orden de papas</p>
+                    <span class="price">$620.00</span>
+                    <span class="old-price">$650.00</span>
+                    <button class="add-to-cart" data-item="Combo LAN Party" data-price="79.99">Añadir combo</button>
+                </div>
+                <div class="promo-card">
+                    <h3>Combo Speedrun</h3>
+                    <p> 3 Hamburguesas clasicas + 3 Bebidas</p>
+                    <span class="price">$180.00</span>
+                    <span class="old-price">$195.00</span>
+                    <button class="add-to-cart" data-item="Combo Speedrun" data-price="24.99">Añadir combo</button>
+                </div>
+                <div class="promo-card">
+                    <h3>Combo Noob</h3>
+                    <p>1 Pizza pepperoni + 1 Bebida</p>
+                    <span class="price">$110.00</span>
+                    <span class="old-price">$119.00</span>
+                    <button class="add-to-cart" data-item="Combo Noob" data-price="9.99">Añadir combo</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact">
+        <div class="container">
+            <h2>Contacto & Delivery</h2>
+            <div class="contact-info">
+                <div>
+                    <h3><i class="fas fa-map-marker-alt"></i> Dirección</h3>
+                    <p>Calle arce 106, fracc, arecas, Altamira, México 89603</p>
+                </div>
+                <div>
+                    <h3><i class="fas fa-phone"></i> Teléfono</h3>
+                    <p>+52 833 288 0736</p>
+                </div>
+                <div>
+                    <h3><i class="fas fa-clock"></i> Horario</h3>
+                    <p>Lunes a Domingo: 12:00 PM - 9:30 PM</p>
+                </div>
+                <div>
+                    <h3><i class="fas fa-motorcycle"></i> Delivery</h3>
+                    <p>Servicio disponible en toda la zona de Altamira</p>
+                </div>
+                <div>
+                    <h3><i class="fas fa-gamepad"></i> Zona Gaming</h3>
+                    <p>Visita nuestro local gaming con consolas</p>
+                </div>
+            </div>
+            <form class="contact-form">
+                <input type="text" placeholder="Nombre" required>
+                <input type="email" placeholder="Correo electrónico" required>
+                <input type="tel" placeholder="Teléfono">
+                <textarea placeholder="Mensaje o pedido especial" required></textarea>
+                <button type="submit" class="btn">Enviar Mensaje</button>
+            </form>
+        </div>
+    </section>
+
+    <div class="cart-sidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Tu Pedido</h3>
+            <button class="close-cart">&times;</button>
+        </div>
+        <div class="cart-items">
+            <!-- Los items del carrito se añadirán aquí dinámicamente -->
+        </div>
+        <div class="cart-total">
+            <h4>Total: <span id="cart-total">$0.00</span></h4>
+        </div>
+        <button class="btn checkout-btn">Realizar Pedido</button>
+    </div>
+    <div class="cart-overlay"></div>
+
+    <button class="cart-button">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count">0</span>
+    </button>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+<a href="https://www.facebook.com/RebanadaGamer"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.instagram.com/larebanadagamer/"><i class="fab fa-instagram"></i></a>
+                <a href="https://api.whatsapp.com/send?phone=5218332880736&text&context=Afe7qDpRuhb5_WVM-XrTUpxuNDKklFPvPrLipyxW54x4aUP5h0Cjur265HWiotlgKhVGmrttZIbXmdV4GFWbR2U44_YT1m9B6MAfadw_VqBL3dT-Ri_VSaswHdWI0yD1AlA4I_r4fE3WOj45La0GqH2vvA&source&app=facebook"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="footer-links">
+                <a href="#inicio">Inicio</a>
+                <a href="#menu">Menú</a>
+                <a href="#promociones">Promociones</a>
+                <a href="#contacto">Contacto</a>
+                <a href="#">Términos y condiciones</a>
+                <a href="#">Política de privacidad</a>
+            </div>
+            <p class="copyright">&copy; 2023 La Rebanada Gamer. Todos los derechos reservados.<br>
+            Comida rápida para gamers con energía.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Variables del carrito
+            let cart = [];
+            const cartButton = document.querySelector('.cart-button');
+            const cartSidebar = document.querySelector('.cart-sidebar');
+            const cartOverlay = document.querySelector('.cart-overlay');
+            const closeCart = document.querySelector('.close-cart');
+            const cartItemsContainer = document.querySelector('.cart-items');
+            const cartTotal = document.querySelector('#cart-total');
+            const cartCount = document.querySelector('.cart-count');
+            
+            // Abrir carrito
+            cartButton.addEventListener('click', () => {
+                cartSidebar.classList.add('active');
+                cartOverlay.classList.add('active');
+            });
+            
+            // Cerrar carrito
+            closeCart.addEventListener('click', () => {
+                cartSidebar.classList.remove('active');
+                cartOverlay.classList.remove('active');
+            });
+            
+            cartOverlay.addEventListener('click', () => {
+                cartSidebar.classList.remove('active');
+                cartOverlay.classList.remove('active');
+            });
+            
+            // Añadir al carrito
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', () => {
+                    const item = button.getAttribute('data-item');
+                    const price = parseFloat(button.getAttribute('data-price'));
+                    
+                    // Verificar si el item ya está en el carrito
+                    const existingItem = cart.find(cartItem => cartItem.item === item);
+                    
+                    if (existingItem) {
+                        existingItem.quantity += 1;
+                    } else {
+                        cart.push({
+                            item,
+                            price,
+                            quantity: 1
+                        });
+                    }
+                    
+                    updateCart();
+                    
+                    // Mostrar notificación
+                    showNotification(`${item} añadido al carrito`);
+                    
+                    // Animación del carrito
+                    cartButton.style.transform = 'scale(1.2)';
+                    setTimeout(() => {
+                        cartButton.style.transform = 'scale(1)';
+                    }, 300);
+                });
+            });
+            
+            // Función para mostrar notificación
+            function showNotification(message) {
+                const notification = document.createElement('div');
+                notification.className = 'notification';
+                notification.textContent = message;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.classList.add('show');
+                }, 10);
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                    setTimeout(() => {
+                        document.body.removeChild(notification);
+                    }, 300);
+                }, 3000);
+            }
+            
+            // Actualizar carrito
+            function updateCart() {
+                // Limpiar carrito
+                cartItemsContainer.innerHTML = '';
+                
+                let total = 0;
+                let count = 0;
+                
+                // Añadir items al carrito
+                cart.forEach((cartItem, index) => {
+                    const cartItemElement = document.createElement('div');
+                    cartItemElement.className = 'cart-item';
+                    
+                    cartItemElement.innerHTML = `
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${cartItem.item}</div>
+                            <div class="cart-item-price">$${(cartItem.price * cartItem.quantity).toFixed(2)}</div>
+                            <div class="cart-item-quantity">Cantidad: ${cartItem.quantity}</div>
+                        </div>
+                        <button class="cart-item-remove" data-index="${index}">&times;</button>
+                    `;
+                    
+                    cartItemsContainer.appendChild(cartItemElement);
+                    
+                    total += cartItem.price * cartItem.quantity;
+                    count += cartItem.quantity;
+                });
+                
+                // Actualizar total y contador
+                cartTotal.textContent = `$${total.toFixed(2)}`;
+                cartCount.textContent = count;
+                
+                // Añadir event listeners a los botones de eliminar
+                document.querySelectorAll('.cart-item-remove').forEach(button => {
+                    button.addEventListener('click', () => {
+                        const index = parseInt(button.getAttribute('data-index'));
+                        cart.splice(index, 1);
+                        updateCart();
+                        showNotification('Producto eliminado del carrito');
+                    });
+                });
+            }
+            
+            // Botón de realizar pedido
+            document.querySelector('.checkout-btn').addEventListener('click', () => {
+                if (cart.length === 0) {
+                    showNotification('Tu carrito está vacío');
+                    return;
+                }
+                
+                let message = '¡Gracias por tu pedido en La Rebanada Gamer!\n\nDetalles del pedido:\n\n';
+                
+                cart.forEach(item => {
+                    message += `${item.item} x ${item.quantity} - $${(item.price * item.quantity).toFixed(2)}\n`;
+                });
+                
+                message += `\nTotal: $${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}`;
+                message += '\n\nTu pedido estará listo en 20-30 minutos. ¡Que disfrutes tu comida!';
+                
+                alert(message);
+                cart = [];
+                updateCart();
+                cartSidebar.classList.remove('active');
+                cartOverlay.classList.remove('active');
+            });
+            
+            // Smooth scrolling para los enlaces del menú
+            document.querySelectorAll('nav a, .footer-links a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
